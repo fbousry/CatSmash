@@ -59,9 +59,7 @@ app.get('/', function(req, res) {
 	percent = ((vote) / (totalVote)) * 100;
 	
 	queryString ="UPDATE cat SET Vote = "+ (vote) +", TotalVote = " + (totalVote) +", VotePercent = "+ percent +" where id = " + req.query.selectedCat;
-	
-	console.log('req1'+queryString);
-	
+		
 	mySqlClient.query(queryString, function(err, fields) {
 		if (err) throw err;
 	});
