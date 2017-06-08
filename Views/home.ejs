@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Home</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				background: #FFF;
+			}
+
+			label {
+				width: 50%;
+				height: 100%;
+				float: left;
+				background: #f9f9f9;
+			}
+
+			label:first-child {
+				background: #ecf0f1;
+			}
+
+			.box {
+				width: 200px;
+				height: 200px;
+				margin: 200px auto;
+				background: black;
+				overflow: hidden;
+				-webkit-border-radius: 63px 63px 63px 63px / 72px 72px 108px 108px ;
+				border-radius: 50% 50% 50% 50% / 40% 40% 60% 60% ;
+				border: 10px solid #FFF;
+				box-shadow: 0 0 50px 0 rgba(0,0,0,0.1);
+			}
+
+			img {
+				width: auto;
+				height: 100%;
+				cursor:pointer;
+				position: relative;
+				display: block;
+			}
+
+			img.logo {
+				width: 202px;
+				height: auto;
+				margin: 0 auto -150px;
+			}		
+			
+			p {
+				background: #FFF;
+				display: block;
+				bottom: 0;
+				margin: 0 auto -50px;
+				line-height: 50px;
+				padding: 0 30px;
+				text-align: center;
+				border-radius: 20px 20px 0 0;
+			}
+
+			@media screen and (max-width: 640px) {
+
+				label {
+					width: 100%;
+				}
+
+				.box {
+					margin: 100px auto;
+				}
+
+				img.logo {
+					width: 202px;
+					height: auto;
+					margin: 0 auto 0;
+				}
+
+			}
+		</style>
+	</head>
+	<body>		
+		<a href="/"><img src="logo.png" class="logo"></a>
+		<form type="GET" action="/vote2" id="vote">
+			<input name="selectedCat" value="" type="hidden">
+			<label>
+				<div class="box" data-id="<%= cats[0].Id %>">
+					<img src="<%= cats[0].Picture %>">
+				</div>
+				<input type="hidden" name="ids" value="<%= cats[0].Id %>">
+			</label>
+
+			<label>
+				<div class="box" data-id="<%= cats[1].Id %>">
+					<img src="<%= cats[1].Picture %>">
+				</div>
+				<input type="hidden" name="ids" value="<%= cats[1].Id %>">
+			</label>
+
+		</form>
+		<a href="/all-cats"><p>Voir les plus beaux chats</p></a>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script>
+			$( ".box" ).click(function() {
+				var id = $(this).attr("data-id");
+				$('input[name="selectedCat"]').val(id);
+				$('#vote').submit();
+			});
+		</script>
+	</body>
+</html>

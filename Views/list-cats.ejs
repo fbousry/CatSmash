@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Classement des chats</title>
+		<style>
+		body {
+				margin: 0;
+				padding: 30px;
+				width: 100%;
+				background: #f9f9f9;
+				font-family: arial;
+			}
+			
+			img {
+				max-width: 200px;
+				height: auto;
+				cursor:pointer;
+				position: relative;
+				display: block;
+				border-radius: 20px;
+				box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+				
+			}
+			
+			img.logo {
+				width: 202px;
+				height: auto;
+				margin: 0 auto -150px;
+			}
+			
+			ol li {
+				font-size: 20px;
+				
+			}
+
+		</style>
+	</head>
+	<body>
+		<a href="/"><img src="logo.png" class="logo"></a>
+		<h1>Classement des chats</h1>
+		<ol><%
+			for(var i = 0 ; i < cats.length ; i++) {
+			%>
+			<li>
+				<img src="<%= cats[i].Picture %>">
+			</li>
+			<% } %>
+		</ol>
+	</body>
+</html>
